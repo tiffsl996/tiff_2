@@ -101,6 +101,16 @@ hide: true
       this.animate(this.obj["Run1"], 6);
     }
 
+    startWalkingLeft() {
+    this.stopAnimate();
+    this.animate(this.obj["WalkL"], -3);  // Negative speed for left movement, check meta data for WalkL
+  }
+
+  startRunningLeft() {
+    this.stopAnimate();
+    this.animate(this.obj["Run1L"], -6);  // Negative speed for left movement, check meta data for Run1L
+  }
+
     startPuffing() {
       this.stopAnimate();
       this.animate(this.obj["Puff"], 0);

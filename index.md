@@ -14,7 +14,7 @@ hide: true
 <!--- Hash is a list variable containing mario metadata for sprite --->
 {% assign hash = site.data.mario_metadata %}  
 <!--- Size width/height of Sprit images --->
-{% assign pixels = 256 %} 
+{% assign pixels = 512 %} <!-- Increase the size of the sprite -->
 
 <!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
 
@@ -62,7 +62,7 @@ hide: true
       this.currentSpeed = 0;
       this.marioElement = document.getElementById("mario"); // HTML element of sprite
       this.pixels = {{pixels}}; // Pixel offset of images in the sprite, set by liquid constant
-      this.interval = 100; // Animation time interval
+      this.interval = 16; // Reduce the animation time interval for smoother animation (60 frames per second)
       this.obj = meta_data;
       this.marioElement.style.position = "absolute";
     }
@@ -202,7 +202,7 @@ hide: true
     // Adjust sprite size for high pixel density devices
     const scale = window.devicePixelRatio;
     const sprite = document.querySelector(".sprite");
-    sprite.style.transform = `scale(${0.2 * scale})`;
+    sprite.style.transform = `scale(${0.4 * scale})`; // Increase the scale for a larger sprite
     mario.startResting();
   });
 
@@ -214,7 +214,7 @@ Investing in Your Technical Future
 Explore the Computer Science Pathway at Del Norte High School. All Del Norte CompSci classes are designed to provide a real-world development experience. Grading is focused on time invested, analytics, participation with peers, and engagement in learning.
 
 - Project-based learning with teacher support
-- Tech Talks by teacher complemented with Student Teaching
+- Tech Talks by teachers complemented with Student Teaching
 - Course learning includes Coding Languages, DevOps, GitHub, Research, and Creativity
 - Student teams practice Agile Development Methodologies: planning, communication, collaboration
 - Class lab time provided and approximately 2-3 hours of homework per week

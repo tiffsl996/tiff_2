@@ -136,6 +136,7 @@ hide: true
 
   ////////// event control /////////
 
+  // Keydown event
   window.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
@@ -159,6 +160,14 @@ hide: true
           mario.startRunningLeft();
         }
       }
+    }
+  });
+
+  // Keyup event
+  window.addEventListener("keyup", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      mario.stopAnimate();
     }
   });
 
@@ -199,6 +208,7 @@ hide: true
 
 </script>
 
+<!-- The rest of your HTML content -->
 Investing in Your Technical Future
 
 Explore the Computer Science Pathway at Del Norte High School. All Del Norte CompSci classes are designed to provide a real-world development experience. Grading is focused on time invested, analytics, participation with peers, and engagement in learning.

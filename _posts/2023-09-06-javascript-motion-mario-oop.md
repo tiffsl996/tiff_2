@@ -266,11 +266,20 @@ Show same code above on screen
         }
       }, this.interval);
     }
+   startWalkingLeft() {
+    this.stopAnimate();
+    this.animate(this.obj["WalkL"], -3);  // Negative speed for left movement, check meta data for WalkL
+  }
 
-    startWalking() {
-      this.stopAnimate();
-      this.animate(this.obj["Walk"], 3);
-    }
+   startWalking() {
+    this.stopAnimate();
+    this.animate(this.obj["WalkL"], 3);  // Negative speed for left movement, check meta data for WalkL
+  }
+
+  startRunningLeft() {
+    this.stopAnimate();
+    this.animate(this.obj["Run1L"], -6);  // Negative speed for left movement, check meta data for Run1L
+  }
 
     startRunning() {
       this.stopAnimate();

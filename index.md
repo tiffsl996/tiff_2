@@ -153,11 +153,25 @@ hide: true
         }
       }
     } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.stopAnimate();
-      } else {
-        mario.startPuffing();
+        event.preventDefault();
+          if (event.repeat) {
+            mario.stopAnimate();
+          } else {
+            if (mario.currentSpeed === 0) {
+              mario.startWalkingLeft();
+            } else if (mario.currentSpeed === -3) {
+              mario.startRunningLeft();
+            }
+          }
+  });
+
+  window.addEventListener("touchstart", (event) => {
+    else {
+      // move left
+      if (currentSpeed === 0) { // if at rest, go to walking
+        mario.startWalkingLeft();
+      } else if (currentSpeed === -3) { // if walking, go to running
+        mario.startRunningLeft();
       }
     }
   });

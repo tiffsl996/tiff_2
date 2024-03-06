@@ -165,17 +165,6 @@ hide: true
           }
   });
 
-  window.addEventListener("touchstart", (event) => {
-    else {
-      // move left
-      if (currentSpeed === 0) { // if at rest, go to walking
-        mario.startWalkingLeft();
-      } else if (currentSpeed === -3) { // if walking, go to running
-        mario.startRunningLeft();
-      }
-    }
-  });
-
   //touch events that enable animations
   window.addEventListener("touchstart", (event) => {
     event.preventDefault(); // prevent default browser action

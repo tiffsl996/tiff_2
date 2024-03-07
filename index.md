@@ -136,31 +136,44 @@ hide: true
 
   ////////// event control /////////
 
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "ArrowRight") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.startCheering();
-      } else {
-        if (mario.currentSpeed === 0) {
-          mario.startWalking();
-        } else if (mario.currentSpeed === 3) {
-          mario.startRunning();
-        }
-      }
-    } else if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.stopAnimate();
-      } else {
-        if (mario.currentSpeed === 0) {
-          mario.startWalkingLeft();
-        } else if (mario.currentSpeed === -3) {
-          mario.startRunningLeft();
-        }
+ // Event control
+window.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    if (event.repeat) {
+      mario.startCheering();
+    } else {
+      if (mario.currentSpeed === 0) {
+        mario.startWalking();
+      } else if (mario.currentSpeed === 3) {
+        mario.startRunning();
       }
     }
-  });
+  }
+});
+
+window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    if (event.repeat) {
+      mario.startCheering();
+    } else {
+      if (mario.currentSpeed === 0) {
+        mario.startWalkingLeft();
+      } else if (mario.currentSpeed === -3) {
+        mario.startRunningLeft();
+      }
+    }
+  }
+});
+
+// Keyup event
+window.addEventListener("keyup", (event) => {
+  if (event.key === "ArrowDown") {
+    event.preventDefault();
+    mario.stopAnimate();
+  }
+});
 
   // Touch events that enable animations
   window.addEventListener("touchstart", (event) => {

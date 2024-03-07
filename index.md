@@ -55,6 +55,8 @@ hide: true
 
   ////////// game object for player /////////
 
+  var mario = null; // Declare mario object
+
   class Mario {
     constructor(meta_data) {
       this.tID = null;  // Capture setInterval() task ID
@@ -132,7 +134,8 @@ hide: true
     }
   }
 
-  const mario = new Mario(mario_metadata);
+  // Create mario object
+  mario = new Mario(mario_metadata);
 
   ////////// event control /////////
 

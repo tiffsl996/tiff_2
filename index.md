@@ -166,15 +166,18 @@ window.addEventListener("keydown", (event) => {
       }
     }
   }
-});
-
-// Keyup event
-window.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    mario.startFlipping();
+  }
   if (event.key === "Space") {
     event.preventDefault();
     mario.stopAnimate();
   }
-});
+  });
+
+// Keyup event
+
 
   // Touch events that enable animations
   window.addEventListener("touchstart", (event) => {

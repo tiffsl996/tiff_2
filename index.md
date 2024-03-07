@@ -87,24 +87,24 @@ hide: true
       }, this.interval);
     }
 
-    startWalking() {
+    startWalkingRight() {
       this.stopAnimate();
       this.animate(this.obj["Walk"], 3);
     }
 
-    startRunning() {
+    startRunningRight() {
       this.stopAnimate();
       this.animate(this.obj["Run1"], 6);
     }
 
     startWalkingLeft() {
       this.stopAnimate();
-      this.animate(this.obj["WalkL"], -3);  // Negative speed for left movement
+      this.animate(this.obj["Walk"], -3);  // Negative speed for left movement
     }
 
     startRunningLeft() {
       this.stopAnimate();
-      this.animate(this.obj["Run1L"], -6);  // Negative speed for left movement
+      this.animate(this.obj["Run1"], -6);  // Negative speed for left movement
     }
 
     startPuffing() {
@@ -143,26 +143,26 @@ window.addEventListener("keydown", (event) => {
     if (event.repeat) {
       mario.startCheering();
     } else {
-      if (mario.currentSpeed === 0) {
-        mario.startWalking();
+      if (mario.currentSpeed === 0 || mario.currentSpeed === -3 || mario.currentSpeed === -6) {
+        mario.startWalkingRight();
+        //mario.startWalkingLeft();
       } else if (mario.currentSpeed === 3) {
-        mario.startRunning();
+        mario.startRunningRight();
+      } else if (mario.currentSpeed === 6) {
+        mario.startResting();
       }
     }
-  }
-});
-
-window.addEventListener("keydown", (event) => {
-  
-    if (event.key === "ArrowLeft") {
-      event.preventDefault();
-      if (event.repeat) {
-        mario.startCheering();
+  } else  if (event.key === "ArrowLeft") {
+    event.preventDefault();
+    if (event.repeat) {
+      mario.startCheering();
     } else {
-      if (mario.currentSpeed === 0) {
+      if (mario.currentSpeed === 0 || mario.currentSpeed === 3 || mario.currentSpeed === 6) {
         mario.startWalkingLeft();
-      } else if (mario.currentSpeed === 3) {
+      } else if (mario.currentSpeed === -3) {
         mario.startRunningLeft();
+      } else if (mario.currentSpeed === -6) {
+        mario.startResting();
       }
     }
   }

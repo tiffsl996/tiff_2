@@ -216,12 +216,10 @@ window.addEventListener("keydown", (event) => {
 
 </script>
 
-Investing in Your Technical Future
+</title>ALL ABOUT TIFFANY</title>
 
-Explore the Computer Science Pathway at Del Norte High School. All Del Norte CompSci classes are designed to provide a real-world development experience. Grading is focused on time invested, analytics, participation with peers, and engagement in learning.
+# Introductions 
+My name is Tiffany Lee, I am a freshmen currently enrolled at Del Norte High school. I have limited prior coding experience and am looking forward to learning much new content. 
 
-- Project-based learning with teacher support
-- Tech Talks by teacher complemented with Student Teaching
-- Course learning includes Coding Languages, DevOps, GitHub, Research, and Creativity
-- Student teams practice Agile Development Methodologies: planning, communication, collaboration
-- Class lab time provided and approximately 2-3 hours of homework per week
+# Hobbies
+I spend my free time not equally between skating, music, reading, and practicing my instruments. I can fluently speak three instruments.

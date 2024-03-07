@@ -153,14 +153,15 @@ window.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("keydown", (event) => {
+  
     if (event.key === "ArrowLeft") {
-    event.preventDefault();
-    if (event.repeat) {
-      mario.startCheering();
+      event.preventDefault();
+      if (event.repeat) {
+        mario.startCheering();
     } else {
       if (mario.currentSpeed === 0) {
         mario.startWalkingLeft();
-      } else if (mario.currentSpeed === -3) {
+      } else if (mario.currentSpeed === 3) {
         mario.startRunningLeft();
       }
     }
@@ -169,7 +170,7 @@ window.addEventListener("keydown", (event) => {
 
 // Keyup event
 window.addEventListener("keyup", (event) => {
-  if (event.key === "ArrowDown") {
+  if (event.key === "Space") {
     event.preventDefault();
     mario.stopAnimate();
   }

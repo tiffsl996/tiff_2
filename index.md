@@ -7,20 +7,22 @@ hide: true
 
 <!-- Liquid: statements -->
 
-<!-- Include submenu from _includes to the top of pages -->
+<!-- Include submenu from _includes to top of pages -->
 {% include nav_home.html %}
-<!-- Concatenation of site URL to frontmatter image -->
+<!--- Concatenation of site URL to frontmatter image  --->
 {% assign sprite_file = site.baseurl | append: page.image %}
-<!-- Hash is a list variable containing mario metadata for sprite -->
-{% assign hash = site.data.mario_metadata %}
-<!-- Size width/height of Sprit images -->
-{% assign pixels = 512 %} <!-- Increase the size of the sprite -->
+<!--- Hash is a list variable containing mario metadata for sprite --->
+{% assign hash = site.data.mario_metadata %}  
+<!--- Size width/height of Sprit images --->
+{% assign pixels = 256 %} 
 
-<!-- HTML for the page contains <p> tag named "Mario" and class properties for a "sprite" -->
+<!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
+
 <p id="mario" class="sprite"></p>
-
-<!-- Embedded Cascading Style Sheet (CSS) rules, define how HTML elements look -->
+  
+<!--- Embedded Cascading Style Sheet (CSS) rules, define how HTML elements look --->
 <style>
+
   /* CSS style rules for the id and class of the sprite... */
   .sprite {
     height: {{pixels}}px;
@@ -35,30 +37,32 @@ hide: true
   }
 </style>
 
-<!-- Embedded executable code-->
+<!--- Embedded executable code--->
 <script>
-  ////////// Convert YML hash to JavaScript key:value objects /////////
+  ////////// convert YML hash to JavaScript key:value objects /////////
 
   var mario_metadata = {}; // Key, value object
-  {% for key in hash %}
-  var key = "{{key | first}}" // Key
+  {% for key in hash %}  
+  
+  var key = "{{key | first}}"  // Key
   var values = {} // Values object
   values["row"] = {{key.row}}
   values["col"] = {{key.col}}
   values["frames"] = {{key.frames}}
   mario_metadata[key] = values; // Key with values added
+
   {% endfor %}
 
-  ////////// Game object for player /////////
+  ////////// game object for player /////////
 
   class Mario {
     constructor(meta_data) {
-      this.tID = null; // Capture setInterval() task ID
-      this.positionX = 0; // Current position of sprite in X direction
+      this.tID = null;  // Capture setInterval() task ID
+      this.positionX = 0;  // Current position of sprite in X direction
       this.currentSpeed = 0;
       this.marioElement = document.getElementById("mario"); // HTML element of sprite
       this.pixels = {{pixels}}; // Pixel offset of images in the sprite, set by liquid constant
-      this.interval = 16; // Reduce the animation time interval for smoother animation (60 frames per second)
+      this.interval = 100; // Animation time interval
       this.obj = meta_data;
       this.marioElement.style.position = "absolute";
     }
@@ -95,12 +99,12 @@ hide: true
 
     startWalkingLeft() {
       this.stopAnimate();
-      this.animate(this.obj["WalkL"], -3); // Negative speed for left movement
+      this.animate(this.obj["WalkL"], -3);  // Negative speed for left movement
     }
 
     startRunningLeft() {
       this.stopAnimate();
-      this.animate(this.obj["Run1L"], -6); // Negative speed for left movement
+      this.animate(this.obj["Run1L"], -6);  // Negative speed for left movement
     }
 
     startPuffing() {
@@ -128,89 +132,79 @@ hide: true
     }
   }
 
-  ////////// Event control /////////
+  const mario = new Mario(mario_metadata);
 
-  // Wait for the DOM to be fully loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    // Create mario object after the DOM is loaded
-    var mario = new Mario(mario_metadata);
+  ////////// event control /////////
 
-    // Keydown event
-    window.addEventListener("keydown", (event) => {
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        if (event.repeat) {
-          mario.startCheering();
-        } else {
-          if (mario.currentSpeed === 0) {
-            mario.startWalking();
-          } else if (mario.currentSpeed === 3) {
-            mario.startRunning();
-          }
-        }
-      } else if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        if (event.repeat) {
-          mario.stopAnimate();
-        } else {
-          if (mario.currentSpeed === 0) {
-            mario.startWalkingLeft();
-          } else if (mario.currentSpeed === -3) {
-            mario.startRunningLeft();
-          }
-        }
-      }
-    });
-
-    // Keyup event
-    window.addEventListener("keyup", (event) => {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        mario.stopAnimate();
-      }
-    });
-
-    // Touch events that enable animations
-    window.addEventListener("touchstart", (event) => {
-      event.preventDefault(); // Prevent default browser action
-      if (event.touches[0].clientX > window.innerWidth / 2) {
-        // Move right
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      if (event.repeat) {
+        mario.startCheering();
+      } else {
         if (mario.currentSpeed === 0) {
-          // If at rest, go to walking
           mario.startWalking();
         } else if (mario.currentSpeed === 3) {
-          // If walking, go to running
           mario.startRunning();
         }
-      } else {
-        // Move left
-        mario.startPuffing();
       }
-    });
+    } else if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      if (event.repeat) {
+        mario.stopAnimate();
+      } else {
+        if (mario.currentSpeed === 0) {
+          mario.startWalkingLeft();
+        } else if (mario.currentSpeed === -3) {
+          mario.startRunningLeft();
+        }
+      }
+    }
+  });
 
-    // Stop animation on window blur
-    window.addEventListener("blur", () => {
-      mario.stopAnimate();
-    });
+  // Touch events that enable animations
+  window.addEventListener("touchstart", (event) => {
+    event.preventDefault(); // Prevent default browser action
+    if (event.touches[0].clientX > window.innerWidth / 2) {
+      // Move right
+      if (mario.currentSpeed === 0) { // If at rest, go to walking
+        mario.startWalking();
+      } else if (mario.currentSpeed === 3) { // If walking, go to running
+        mario.startRunning();
+      }
+    } else {
+      // Move left
+      mario.startPuffing();
+    }
+  });
 
-    // Start animation on window focus
-    window.addEventListener("focus", () => {
-      mario.startFlipping();
-    });
+  // Stop animation on window blur
+  window.addEventListener("blur", () => {
+    mario.stopAnimate();
+  });
 
-    // Start animation on page load or page refresh
+  // Start animation on window focus
+  window.addEventListener("focus", () => {
+    mario.startFlipping();
+  });
+
+  // Start animation on page load or page refresh
+  document.addEventListener("DOMContentLoaded", () => {
+    // Adjust sprite size for high pixel density devices
+    const scale = window.devicePixelRatio;
+    const sprite = document.querySelector(".sprite");
+    sprite.style.transform = `scale(${0.2 * scale})`;
     mario.startResting();
   });
 
 </script>
 
-<!-- The rest of your HTML content -->
 Investing in Your Technical Future
 
 Explore the Computer Science Pathway at Del Norte High School. All Del Norte CompSci classes are designed to provide a real-world development experience. Grading is focused on time invested, analytics, participation with peers, and engagement in learning.
 
 - Project-based learning with teacher support
-- Tech Talks by teachers complemented with Student Teaching
+- Tech Talks by teacher complemented with Student Teaching
 - Course learning includes Coding Languages, DevOps, GitHub, Research, and Creativity
 - Student teams practice Agile Development Methodologies: planning, communication, collaboration
 - Class lab time provided and approximately 2-3 hours of homework per week

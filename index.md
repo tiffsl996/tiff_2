@@ -13,8 +13,11 @@ hide: true
 {% assign sprite_file = site.baseurl | append: page.image %}
 <!--- Hash is a list variable containing mario metadata for sprite --->
 {% assign hash = site.data.mario_metadata %}  
-<!--- Size width/height of Sprit images --->
+
 {% assign pixels = 256 %} 
+
+[Trimester 1 Game](https://vibha1019.github.io/group_project//plans/week3.md)
+
 
 <!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
 
@@ -220,6 +223,28 @@ window.addEventListener("keydown", (event) => {
 
 </script>
 
+<style>
+  h1 {
+    font-family: 'Courier New', serif;
+    color: violet;
+  }
+
+  h2 {
+    font-family: 'Courier New', serif;
+    color: violet;
+  }
+
+  h3 {
+    font-family: 'Courier New', serif;
+    color: violet;
+  }
+
+  p {
+    font-family: 'Courier New', sans-serif;
+    color: beige;
+  }
+</style>
+
 # TIFFANY LEE
 
 ## Introductions 
@@ -230,3 +255,6 @@ I spend my free time not equally between skating, music, reading, and practicing
 
 ## Goals
 My goals for the year is to become more immersive in the tech world and become somewhat experienced in coding
+
+
+

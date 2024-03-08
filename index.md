@@ -138,7 +138,7 @@ hide: true
 
  // Event control
 window.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowRight") {
+  if (event.key === "ArrowRight" || event.key === "j") {
     event.preventDefault();
     if (event.repeat) {
       mario.startCheering();
@@ -152,7 +152,7 @@ window.addEventListener("keydown", (event) => {
         mario.startResting();
       }
     }
-  } else  if (event.key === "ArrowLeft") {
+  } else  if (event.key === "ArrowLeft" || event.key === "f") {
     event.preventDefault();
     if (event.repeat) {
       mario.startCheering();
@@ -166,13 +166,17 @@ window.addEventListener("keydown", (event) => {
       }
     }
   }
-  if (event.key === "Enter") {
+  if (event.key === "Enter" || event.key === "g") {
     event.preventDefault();
     mario.startFlipping();
   }
-  if (event.key === "Space") {
+  if (event.key === " ") {
     event.preventDefault();
     mario.stopAnimate();
+  }
+  if (event.key === "ArrowUp" || event.key === "h") {
+     event.preventDefault();
+     mario.startCheering()
   }
   });
 
@@ -216,10 +220,13 @@ window.addEventListener("keydown", (event) => {
 
 </script>
 
-</title>ALL ABOUT TIFFANY</title>
+# TIFFANY LEE
 
-# Introductions 
+## Introductions 
 My name is Tiffany Lee, I am a freshmen currently enrolled at Del Norte High school. I have limited prior coding experience and am looking forward to learning much new content. 
 
-# Hobbies
-I spend my free time not equally between skating, music, reading, and practicing my instruments. I can fluently speak three instruments.
+## Hobbies
+I spend my free time not equally between skating, music, reading, and practicing my instruments. 
+
+## Goals
+My goals for the year is to become more immersive in the tech world and become somewhat experienced in coding

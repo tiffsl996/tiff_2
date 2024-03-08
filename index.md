@@ -16,7 +16,7 @@ hide: true
 
 {% assign pixels = 256 %} 
 
-[Trimester 1 Game](https://vibha1019.github.io/group_project//plans/week3.md)
+[Trimester 1 Game](https://vibha1019.github.io/group_project//plans/week3)
 
 
 <!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
@@ -171,10 +171,9 @@ window.addEventListener("keydown", (event) => {
   }
   if (event.key === "Enter" || event.key === "g") {
     event.preventDefault();
-    mario.startFlipping();
-  }
+      mario.startPuffing();
+        } 
   if (event.key === " ") {
-    event.preventDefault();
     mario.stopAnimate();
   }
   if (event.key === "ArrowUp" || event.key === "h") {

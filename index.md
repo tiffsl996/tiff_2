@@ -16,9 +16,6 @@ hide: true
 
 {% assign pixels = 256 %} 
 
-[Trimester 1 Game](https://vibha1019.github.io/group_project//plans/week3)
-
-
 <!--- HTML for page contains <p> tag named "Mario" and class properties for a "sprite"  -->
 
 <p id="mario" class="sprite"></p>

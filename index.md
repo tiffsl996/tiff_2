@@ -5,6 +5,7 @@ image: /images/mario_animation.png
 hide: true
 ---
 
+<link rel="stylesheet" href="_sass/minima/blog-styles.scss">
 <!-- Liquid: statements -->
 
 <!-- Include submenu from _includes to top of pages -->
@@ -138,7 +139,7 @@ hide: true
 
  // Event control
 window.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowRight" || event.key === "j") {
+  if (event.key === "ArrowRight" || event.key === "d") {
     event.preventDefault();
     if (event.repeat) {
       mario.startCheering();
@@ -152,7 +153,7 @@ window.addEventListener("keydown", (event) => {
         mario.startResting();
       }
     }
-  } else  if (event.key === "ArrowLeft" || event.key === "f") {
+  } else  if (event.key === "ArrowLeft" || event.key === "a") {
     event.preventDefault();
     if (event.repeat) {
       mario.startCheering();
@@ -166,14 +167,14 @@ window.addEventListener("keydown", (event) => {
       }
     }
   }
-  if (event.key === "Enter" || event.key === "g") {
+  if (event.key === "Enter" || event.key === "w") {
     event.preventDefault();
-      mario.startPuffing();
+      mario.startFlipping();
         } 
   if (event.key === " ") {
     mario.stopAnimate();
   }
-  if (event.key === "ArrowUp" || event.key === "h") {
+  if (event.key === "ArrowUp" || event.key === "s") {
      event.preventDefault();
      mario.startCheering()
   }
@@ -218,28 +219,6 @@ window.addEventListener("keydown", (event) => {
   });
 
 </script>
-
-<style>
-  h1 {
-    font-family: 'Courier New', serif;
-    color: violet;
-  }
-
-  h2 {
-    font-family: 'Courier New', serif;
-    color: violet;
-  }
-
-  h3 {
-    font-family: 'Courier New', serif;
-    color: violet;
-  }
-
-  p {
-    font-family: 'Courier New', sans-serif;
-    color: beige;
-  }
-</style>
 
 # TIFFANY LEE
 

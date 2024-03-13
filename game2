@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8">
@@ -138,7 +136,6 @@ window.onload = wrap_img;
       import SettingsControl from '/teacher_portfolio/assets/js/platformer2x/SettingsControl.js';
       import GameEnv from '/teacher_portfolio/assets/js/platformer2x/GameEnv.js';
       import Leaderboard from '/teacher_portfolio/assets/js/platformer2x/Leaderboard.js';
-      import Audio from '/teacher_portfolio/assets/js/platformer2x/Audio.js'    
       import startCutstory from '/teacher_portfolio/assets/js/platformer2x/Cutstory.js';;
   
       /* 

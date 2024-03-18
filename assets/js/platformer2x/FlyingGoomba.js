@@ -68,7 +68,7 @@ export class FlyingGoomba extends Character {
         //Immunize Goomba & Texture It
         if (GameEnv.difficulty === "hard") {
                 this.canvas.style.filter = "invert(100%)";
-                this.canvas.style.scale = 1.25;
+                this.canvas.style.scale = 1.00;
                 this.immune = 1;
         } else if (GameEnv.difficulty === "impossible") {
                 this.canvas.style.filter = 'brightness(1000%)';

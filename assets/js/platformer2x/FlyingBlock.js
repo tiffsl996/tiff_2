@@ -1,8 +1,11 @@
-import Character from './Character.js';
 import GameEnv from './GameEnv.js';
-
-export class FlyingGoomba extends Character {
-  
+import GameObject from './GameObject.js';
+export class BlockPlatform extends GameObject {
+    constructor(canvas, image, data, xPercentage, yPercentage) {
+        super(canvas, image, data, 0.0, 0.0);
+        this.platformX = xPercentage * GameEnv.innerWidth;
+        this.platformY = yPercentage;
+    }  
     // constructors sets up Character object 
     constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition){
         super(canvas, image, data);

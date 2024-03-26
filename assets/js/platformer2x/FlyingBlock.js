@@ -1,15 +1,12 @@
 import GameEnv from './GameEnv.js';
 import GameObject from './GameObject.js';
-export class BlockPlatform extends GameObject {
+export class FlyingBlock extends GameObject {
     constructor(canvas, image, data, xPercentage, yPercentage) {
         super(canvas, image, data, 0.0, 0.0);
         this.platformX = xPercentage * GameEnv.innerWidth;
         this.platformY = yPercentage;
-    }  
-    // constructors sets up Character object 
-    constructor(canvas, image, data, xPercentage, yPercentage, name, minPosition){
-        super(canvas, image, data);
 
+    // constructors sets up Character object 
         //Unused but must be defined
         this.name = name;
         this.yPercentage = yPercentage;
@@ -31,21 +28,7 @@ export class BlockPlatform extends GameObject {
             this.speed = this.speed * 2;
         }
     }
-
-    dropGoomba() {
-      let playerX = GameEnv.PlayerPosition.playerX;
-      let playerY = GameEnv.PlayerPosition.playerY;
-
-      // Drop the Goomba on the Player when relatively close
-      if (Math.abs(this.x - playerX) < 150 && this.y !== playerY) {
-        //Move Goomba towards Player
-        this.y = followPlayer(this.y, playerY, 0.03);
-      } else {
-        //Move Goomba towards Sky
-        this.y = followPlayer(this.y, 0.4 * GameEnv.innerHeight, 0.02);
-      }
-    }
-
+    
     update() {
         super.update();
 
@@ -53,7 +36,7 @@ export class BlockPlatform extends GameObject {
             this.speed = -this.speed;
         }
 
-        this.dropGoomba();
+        this.dropBlock();
 
         // Every so often change direction
         if (Math.random() < 0.005) {
@@ -82,40 +65,6 @@ export class BlockPlatform extends GameObject {
         // Move the enemy
         this.x -= this.speed;
     }
-
-    // Player action on collisions
-    collisionAction() {
-        if (this.collisionData.touchPoints.other.id === "tube") {
-            if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;            
-            }
-        }
-        if (this.collisionData.touchPoints.other.id === "player") {
-            this.speed = 0;
-            // Collision: Top of Goomba with Bottom of Player
-            console.log(this.collisionData.touchPoints.other.bottom + 'bottom')
-            console.log(this.collisionData.touchPoints.other.top + "top")
-            console.log(this.collisionData.touchPoints.other.right + "right")
-            console.log(this.collisionData.touchPoints.other.left + "left")
-            
-            if (this.collisionData.touchPoints.other.bottom && this.immune == 0) {
-                GameEnv.invincible = true;
-                this.speed = 0;
-                GameEnv.playSound("goombaDeath");
-                setTimeout((function() {
-                    GameEnv.invincible = false;
-                    this.destroy();
-                }).bind(this), 1500);
-
-            }
-        }
-
-        if (this.collisionData.touchPoints.other.id === "jumpPlatform") {
-            if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
-                this.speed = -this.speed;            
-            }
-        }
-    }
 }
 
 
@@ -134,4 +83,4 @@ function followPlayer(min, max, t) {
   return (max - min) * t + min;
 }
 
-export default FlyingGoomba;
+export default FlyingBlock;

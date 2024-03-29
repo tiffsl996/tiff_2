@@ -128,7 +128,7 @@ const GameControl = {
             }
             */
         }
-    },    
+    },   
         
     /**
      * Starts the game timer.

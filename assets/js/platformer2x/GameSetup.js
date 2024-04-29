@@ -17,7 +17,6 @@ import FlyingGoomba from './FlyingGoomba.js';
 import BlockPlatform from './BlockPlatform.js';
 import Mushroom from './Mushroom.js';
 import Coin from './Coin.js';
-import FlyingBlock from './FlyingBlock.js';
 
 /* Coding Style Notes
  *

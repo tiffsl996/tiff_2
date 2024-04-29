@@ -1,5 +1,8 @@
+
 import GameEnv from './GameEnv.js';
 import GameObject from './GameObject.js';
+import createSound from './Sound.js';
+const sound = createSound('/Users/tiffsl/vscode/tiff_2/assets/audio/stomp.mp3');
 export class BlockPlatform extends GameObject {
     constructor(canvas, image, data, xPercentage, yPercentage) {
         super(canvas, image, data, 0.0, 0.0);

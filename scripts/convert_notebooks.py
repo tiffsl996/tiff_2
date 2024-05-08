@@ -61,17 +61,17 @@ def convert_notebook_to_markdown_with_front_matter(notebook_file):
         destination_path = os.path.join(destination_directory, destination_file)
         
         # Write the converted Markdown file
-        with open(destination_path, "w", encoding="utf-8") as file:
-            file.write(markdown_with_front_matter)
+       # with open(destination_path, "w", encoding="utf-8") as file:
+           # file.write(markdown_with_front_matter)
 
-# Function to convert the Jupyter Notebook files to Markdown
+#Function to convert the Jupyter Notebook files to Markdown
 def convert_single_notebook(notebook_file):
-    try:
-        convert_notebook_to_markdown_with_front_matter(notebook_file)
-    except ConversionException as e:
-        print(f"Conversion error for {notebook_file}: {str(e)}")
-        error_cleanup(notebook_file)
-        sys.exit(1)
+       try:
+            convert_notebook_to_markdown_with_front_matter(notebook_file)
+        except ConversionException as e:
+            print(f"Conversion error for {notebook_file}: {str(e)}")
+            error_cleanup(notebook_file)
+            sys.exit(1)
 
 def convert_notebooks():
     notebook_files = glob.glob(f"{notebook_directory}/*.ipynb")
